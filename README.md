@@ -2,6 +2,14 @@
 
 A slightly cursed transpiler for JSX-like syntax to Lustre in Gleam
 
+> [!CAUTION]
+> This project is a superset of Gleam and no tooling made
+> for the Gleam Programming language should be expected to
+> work with a codebase utilising Lux.
+> This project is also not affiliated with Gleam or Lustre, any
+> issues related to the html syntax should be reported here in
+> the lux repository.
+
 ## How it works
 
 It takes this lux code from the 01-hello-world lustre example
