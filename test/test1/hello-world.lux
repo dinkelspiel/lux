@@ -1,0 +1,17 @@
+import lustre
+import lustre/attribute
+import lustre/element
+import lustre/element/html
+import lustre/ui
+
+pub fn main() {
+  let styles = [#("width", "100vw"), #("height", "100vh"), #("padding", "1rem")]
+
+  let app = lustre.element((<div style={styles}>
+      <h1>Hello, world.</h1>
+      <h2>Welcome to Lustre.</h2>
+    </div>))
+  let assert Ok(_) = lustre.start(app, "#app", Nil)
+
+  Nil
+}
