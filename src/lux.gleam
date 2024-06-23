@@ -34,7 +34,9 @@ pub fn main() {
       #(_, Error(_)) -> panic as "Failed to read file"
     }
   })
-  |> list.map(fn(file) { #(file.0 <> ".gleam", lux_to_gleam(file.1)) })
+  |> list.map(fn(file) {
+    #(strip_file_extension(file.0) <> ".gleam", lux_to_gleam(file.1))
+  })
   |> list.map(fn(file) {
     io.debug("Writing " <> file.0 <> "...")
     simplifile.write(file.0, file.1)
@@ -49,4 +51,16 @@ fn ends_in_lux(value: String) {
     Ok(end) if end == "lux" -> True
     Error(_) | _ -> False
   }
+}
+
+fn strip_file_extension(value: String) {
+  string.split(value, ".")
+  |> list.take(
+    {
+      string.split(value, ".")
+      |> list.length
+    }
+    - 1,
+  )
+  |> string.join(".")
 }
