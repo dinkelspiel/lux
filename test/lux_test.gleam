@@ -1,8 +1,6 @@
 import gleam/io
-import gleam/list
 import gleam/result
 import gleeunit
-import gleeunit/should
 import lux
 import simplifile
 
@@ -15,5 +13,4 @@ pub fn hello_world_test() {
   |> result.unwrap("")
   |> lux.lux_to_gleam
   |> io.debug
-  // |> should.equal([])
 }

@@ -1,4 +1,3 @@
-import gleam/io
 import gleam/list
 import gleam/string
 
@@ -12,7 +11,7 @@ pub fn detect_language_gleam(
   current_token: String,
   tokens: List(Language),
   inside_lux: Bool,
-) {
+) -> List(Language) {
   let current_char = case string.first(document) {
     Ok(first_char) -> first_char
     Error(_) -> ""
@@ -65,7 +64,7 @@ pub fn detect_language_lux(
   document: String,
   current_token: String,
   tokens: List(Language),
-) {
+) -> List(Language) {
   let current_char = case string.first(document) {
     Ok(first_char) -> first_char
     Error(_) -> ""
@@ -105,7 +104,7 @@ pub fn detect_language_lux(
   }
 }
 
-fn count_braces(document: String, count: Int, is_string: Bool) {
+fn count_braces(document: String, count: Int, is_string: Bool) -> Int {
   let current_char = case string.first(document) {
     Ok(first_char) -> first_char
     Error(_) -> ""

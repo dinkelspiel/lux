@@ -19,7 +19,7 @@ pub fn languages_to_tokens(
   |> list.flat_map(tokenize_language)
 }
 
-pub fn tokenize_language(language: split_languages.Language) {
+pub fn tokenize_language(language: split_languages.Language) -> List(Token) {
   case language {
     split_languages.Gleam(code) -> [Code(code)]
     split_languages.Lux(code) -> tokenize_lux(code, "", [])
@@ -86,7 +86,10 @@ pub fn tokenize_lux(
   }
 }
 
-fn add_prev_id_if_exists(current_token: String, new_tokens: List(Token)) {
+fn add_prev_id_if_exists(
+  current_token: String,
+  new_tokens: List(Token),
+) -> List(Token) {
   list.append(
     case
       string.replace(current_token, " ", "")

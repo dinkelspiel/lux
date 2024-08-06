@@ -31,7 +31,7 @@ fn is_next_in_ast_tag(ast: List(AST)) -> Bool {
   }
 }
 
-pub fn export_tag(tag: AST, are_more_tags: Bool) {
+pub fn export_tag(tag: AST, are_more_tags: Bool) -> String {
   case tag {
     Tag(name, attributes, children) ->
       "html."
