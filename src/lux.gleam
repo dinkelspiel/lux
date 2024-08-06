@@ -15,7 +15,7 @@ pub fn lux_to_gleam(document: String) -> String {
     |> parser.parse_data([], "")
   {
     Ok(#(_, ast)) -> ast
-    Error(_) -> panic
+    Error(error) -> panic as error
   }
   |> exporter.export("")
 }
