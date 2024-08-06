@@ -1,6 +1,7 @@
-import gleam/io
 import gleam/result
+import gleam/string
 import gleeunit
+import gleeunit/should
 import lux
 import simplifile
 
@@ -8,9 +9,16 @@ pub fn main() {
   gleeunit.main()
 }
 
-pub fn hello_world_test() {
-  simplifile.read("./test/test1/hello.lux")
+pub fn lux_to_gleam_test() {
+  simplifile.read("./test/example.lux")
   |> result.unwrap("")
   |> lux.lux_to_gleam
-  |> io.debug
+  |> string.length
+  |> fn(len) {
+    case len {
+      0 -> False
+      _ -> True
+    }
+  }
+  |> should.be_true
 }

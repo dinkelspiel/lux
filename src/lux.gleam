@@ -12,7 +12,6 @@ pub fn lux_to_gleam(document: String) -> String {
     split_languages.detect_language_gleam(document, "", [], False)
     |> list.map(io.debug)
     |> tokenizer.languages_to_tokens
-    // |> list.map(io.debug)
     |> parser.parse_data([], "")
   {
     Ok(#(_, ast)) -> ast
