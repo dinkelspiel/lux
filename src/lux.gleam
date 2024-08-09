@@ -7,16 +7,15 @@ import lux/split_languages
 import lux/tokenizer
 import simplifile
 
-pub fn lux_to_gleam(document: String) {
+pub fn lux_to_gleam(document: String) -> String {
   case
     split_languages.detect_language_gleam(document, "", [], False)
     |> list.map(io.debug)
     |> tokenizer.languages_to_tokens
-    // |> list.map(io.debug)
     |> parser.parse_data([], "")
   {
     Ok(#(_, ast)) -> ast
-    Error(error) -> panic(error)
+    Error(error) -> panic as error
   }
   |> exporter.export("")
 }
@@ -43,7 +42,7 @@ pub fn main() {
   })
 }
 
-fn ends_in_lux(value: String) {
+fn ends_in_lux(value: String) -> Bool {
   case
     string.split(value, ".")
     |> list.last
@@ -53,7 +52,7 @@ fn ends_in_lux(value: String) {
   }
 }
 
-fn strip_file_extension(value: String) {
+fn strip_file_extension(value: String) -> String {
   string.split(value, ".")
   |> list.take(
     {

@@ -1,4 +1,3 @@
-import gleam/io
 import gleam/list
 import lux/tokenizer.{ArrowLeft, ArrowRight, Code, Equals, Id, Slash, String}
 
@@ -13,8 +12,6 @@ pub fn parse_data(
   ast: List(AST),
   name: String,
 ) -> Result(#(List(tokenizer.Token), List(AST)), String) {
-  // io.debug("data")
-  // io.debug(tokens)
   case tokens {
     [ArrowLeft, Slash, Id(name2), ArrowRight, ..final_rest] if name == name2 ->
       Ok(#(final_rest, ast))
